@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ContactPage extends StatelessWidget {
+  String my;
+
   const ContactPage({Key? key}) : super(key: key);
 
   @override
@@ -102,7 +104,7 @@ class ContactPage extends StatelessWidget {
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
                           Text(
-                            "bayorwor60@gmail.com",
+                            my,
                             style: TextStyle(color: Colors.grey),
                           ),
                         ]),
