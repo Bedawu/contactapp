@@ -2,11 +2,12 @@ import 'package:contactapp/contact_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const contactpage());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class contactpage extends StatelessWidget {
+  const contactpage({Key? key, this.mycontact}) : super(key: key);
+  final mycontact;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List myContacts = listOfcontacts;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -36,14 +38,14 @@ class HomePage extends StatelessWidget {
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16),
-            child: CircleAvatar(
-              backgroundImage: AssetImage("images/woman.jpg"),
+            child: const CircleAvatar(
+              backgroundImage: NetworkImage("images/woman.jpg"),
             ),
           ),
         ],
       ),
       body: ListView.builder(
-          itemCount: 10,
+          itemCount: myContacts.length,
           itemBuilder: (BuildContext context, index) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,13 +78,14 @@ class HomePage extends StatelessWidget {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => ContactPage()));
                   },
-                  child: const ListTile(
+                  child: ListTile(
                     leading: CircleAvatar(
-                      backgroundImage: AssetImage("images/lady.jpg"),
+                      backgroundImage: NetworkImage(
+                          "${myContacts[index]["image"]} ${index + 23}"),
                     ),
                     title: Text(
-                      "Techries Ghana",
-                      style: TextStyle(fontWeight: FontWeight.w800),
+                      myContacts[index]["name"],
+                      style: const TextStyle(fontWeight: FontWeight.w800),
                     ),
                     subtitle: Text("+233 505 419 44"),
                     trailing: Icon(Icons.more_horiz),
@@ -106,3 +109,62 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+List listOfcontacts = [
+  {
+    "name": "Ntolee",
+    "location": "FUNSI Ghana",
+    "email": "nbedawu@gmail.com",
+    "phone": "+055108655",
+    "Group": "family",
+    "image": "https://picsum.photos/200/300?random=",
+  },
+  {
+    "name": "Ntolee",
+    "location": "FUNSI Ghana",
+    "email": "nbedawu@gmail.com",
+    "phone": "0244896540",
+    "Group": "family",
+    "image": "https://picsum.photos/200/300?random=",
+  },
+  {
+    "name": "Bedawu",
+    "location": "FUNSI Ghana",
+    "email": "nbedawu@gmail.com",
+    "phone": "+055108655",
+    "Group": "family",
+    "image": "https://picsum.photos/200/300?random=",
+  },
+  {
+    "name": "Mariam",
+    "location": "FUNSI Ghana",
+    "email": "nbedawu@gmail.com",
+    "phone": "+243510865",
+    "Group": "family",
+    "image": "https://picsum.photos/200/300?random=",
+  },
+  {
+    "name": "Nadia",
+    "location": "FUNSI Ghana",
+    "email": "nbedawu@gmail.com",
+    "phone": "+245789030",
+    "Group": "family",
+    "image": "https://picsum.photos/200/300?random=",
+  },
+  {
+    "name": "Ama Ofori",
+    "location": "FUNSI Ghana",
+    "email": "nbedawu@gmail.com",
+    "phone": "+542367508",
+    "Group": "family",
+    "image": "https://picsum.photos/200/300?random=",
+  },
+  {
+    "name": "Ntolee",
+    "location": "FUNSI Ghana",
+    "email": "nbedawu@gmail.com",
+    "phone": "0245758101",
+    "Group": "family",
+    "image": "https://picsum.photos/200/300?random=",
+  },
+];
